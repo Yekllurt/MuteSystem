@@ -1,0 +1,245 @@
+#####################################
+#####							#####
+##### Configuration explanation #####
+#####							#####
+#####################################
+
+~~~ configured ~~~
+Expected value: boolean
+Default value: false
+Description: If this value is set to false, the plugin won't work. Please set this value to true after you have configured the plugin.
+
+~~~ database.host ~~~
+Expected value: String
+Default value: localhost
+Description: The address of the database
+
+~~~ database.port ~~~
+Expected value: Integer
+Default value: 3306
+Description: The database port
+
+~~~ database.username ~~~
+Expected value: String
+Default value: root
+Description: The account username which is used to connect to the database
+
+~~~ database.password ~~~
+Expected value: String
+Default value:
+Description: The account password which is used to connect to the database
+
+~~~ database.database ~~~
+Expected value: String
+Default value: database
+Description: The database which the plugin will use after connecting to the database
+
+~~~ database.table_prefix ~~~
+Expected value: String
+Default value: mutesystem
+Description: The prefix which is put in front of the table in which the information is stored
+
+~~~ database.use_ssl ~~~
+Expected value: Boolean
+Default value: true
+Description: The database attempts to use SSL to encrypt the data transfer
+
+~~~ database.require_ssl ~~~
+Expected value: Boolean
+Default value: false
+Description: A connection will only be established if the database supports SSL encryption
+
+~~~ cache.cache_time ~~~
+Expected value: Integer
+Default value: 20
+Unit: seconds
+Description: The amount of time during which the data which is cached is valid.
+Recommendation: Set this value to a higher value if you are only using this plugin on one server. If you are using it on multiple servers at the same time, using a low value is recommended.
+
+~~~ cache.automatic_cache_clearing.activated ~~~
+Expected value: Boolean
+Default value: true
+Description: Enabled if after n seconds the invalid cache data should be remove from memory or not
+Recommendation: Activate this if you have a lot of players on the server or if you experience memoroy issues
+
+~~~ cache.automatic_cache_clearing.interval ~~~
+Expected value: Long
+Default value: 500
+Description: The interval at which the invalid cache data is removed from memory
+
+~~~ language ~~~
+Expected value: String
+Default value: en_US
+Description: The language which is used by the plugin
+Information: Do not add the .json file ending to the value. It is automatically added when loading the language.
+Adding a new language: If you want to add a new language just copy one of the existing language files and rename the new file. Then edit the values to your language. It can then be used like any language provided by the plugin.
+
+~~~ command.mute_history.display_limit ~~~
+Expected value: Integer
+Default value: 10
+Description: The amount of history values which are displayed.
+
+~~~ block_command_execution_when_muted ~~~
+Expected value: Boolean
+Default value: false
+Description: Prevent a player from executing all commands when being muted
+
+
+####################
+#####		   #####
+##### Commands #####
+#####		   #####
+####################
+
+~~~ mute ~~~
+Permission: mutesystem.mute
+Syntax: /mute (target) [reason]
+Description: Mute a player
+
+~~~ mutehistory ~~~
+Permission: mutesystem.mutehistory
+Syntax: /mutehistory (target)
+Description: View a players mute history
+
+~~~ mutestatus ~~~
+Permission: mutesystem.mutestatus
+Syntax: /mutestatus (target)
+Description: View a players mute status
+
+~~~ tempmute ~~~
+Permission: mutesystem.tempmute
+Syntax: /mute (target) (duration) [reason]
+Description: Temporary mute a player
+Information: The duration argument accepts a natural number followed by a time unit (the short time unit: m, h, d, w, M, y). You can have as many natural number time unit combinations as you want. However there must be no space in between. Example: 5d6h, 5d, 1y6M3w, 30m
+Time units:
+ - m = minute
+ - h = hour
+ - d = day
+ - w = week
+ - M = month
+ - y = year
+
+~~~ unmute ~~~
+Permission: mutesystem.unmute
+Syntax: /unmute (target)
+Description: Unmute a player
+
+
+
+#############################
+#####					#####
+##### Message variables #####
+#####					#####
+#############################
+
+~~~ %day_of_month% ~~~
+Description: The day of the month
+
+~~~ %month% ~~~
+Description: The month
+
+~~~ %year% ~~~
+Description: The year
+
+~~~ %second% ~~~
+Description: The second within a minute
+
+~~~ %minute% ~~~
+Description: The minute within the hour
+
+~~~ %hour_12_hour_clock% ~~~
+Description: The hour of the morning or afternoon
+
+~~~ %am_pm% ~~~
+Description: Indicating whether the hour of they is before or after noon
+
+~~~ %hour_24_hour_clock% ~~~
+Description: The hour of the day
+
+~~~ %user% ~~~
+Description: A username
+
+~~~ %time_unit% ~~~
+Description: A time unit
+
+~~~ %count% ~~~
+Description: An amount value (Integer)
+
+~~~ %target% ~~~
+Description: A username
+
+~~~ %id% ~~~
+Description: An id. Usually in form of an Integer,
+
+~~~ %action% ~~~
+Description: An action
+
+
+
+########################################
+#####							   #####
+##### Messages and their variables #####
+#####							   #####
+########################################
+
+~~~ chat.temporary_mute ~~~
+Supported variables: %day_of_month%, %month%, %year%, %second%, %minute%, %hour_12_hour_clock%, %am_pm%, %hour_24_hour_clock%
+
+~~~ command.user_does_not_exist ~~~
+Supported variables: %user%
+
+~~~ command.player_is_already_muted ~~~
+Supported variables: %user%
+
+~~~ command.player_is_not_muted ~~~
+Supported variables: %user%
+
+~~~ command.mute.success ~~~
+Supported variables: %user%
+
+~~~ command.unmute.success" ~~~
+Supported variables: %user%
+
+~~~ command.mute_status.is_not_muted" ~~~
+Supported variables: %user%
+
+~~~ command.mute_status.permanent_mute ~~~
+Supported variables: %user%
+
+~~~ command.mute_status.temporary_mute ~~~
+Supported variables: %user%, %day_of_month%, %month%, %year%, %second%, %minute%, %hour_12_hour_clock%, %am_pm%, %hour_24_hour_clock%
+
+~~~ command.temporary_mute.unknown_time_unit ~~~
+Supported variables: %time_unit%
+
+~~~ command.temporary_mute.success ~~~
+Supported variables: %user%, %day_of_month%, %month%, %year%, %second%, %minute%, %hour_12_hour_clock%, %am_pm%, %hour_24_hour_clock%
+
+~~~ command.mute_history.result.header ~~~
+Supported variables: %count%
+
+~~~ command.mute_history.result.target ~~~
+Supported variables: %target%
+
+~~~ command.mute_history.result.mute ~~~
+Supported variables: %id%, %action%, %executor%, %day_of_month%, %month%, %year%, %second%, %minute%, %hour_12_hour_clock%, %am_pm%, %hour_24_hour_clock%
+
+~~~ command.mute_history.result.temporary_mute ~~~
+Supported variables: %id%, %action%, %executor%, %day_of_month%, %month%, %year%, %second%, %minute%, %hour_12_hour_clock%, %am_pm%, %hour_24_hour_clock%
+
+~~~ command.mute_history.result.unmute ~~~
+Supported variables: %id%, %action%, %executor%, %day_of_month%, %month%, %year%, %second%, %minute%, %hour_12_hour_clock%, %am_pm%, %hour_24_hour_clock%
+
+
+
+###############
+#####	  #####
+##### API #####
+#####	  #####
+###############
+
+Usage:
+- Download the jar
+- Open your IDE
+- Add the MuteSystem.jar as external jar to your project
+- Access the API by calling MuteSystem.getMuteSystemAPI()

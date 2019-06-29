@@ -1,0 +1,21 @@
+name: MuteSystem
+author: Yekllurt
+main: dev.yekllurt.mutesystem.MuteSystem
+version: 1.4.3
+
+commands:
+  mute:
+    usage: /mute (target) [reason]
+    description: Mute a player
+  unmute:
+    usage: /unmute (target)
+    description: Unmute a player
+  mutestatus:
+    usage: /mutestatus (target)
+    description: View a players mute status
+  tempmute:
+    usage: /tempmute (target) (duration) [reason]
+    description: Temporary mute a player
+  mutehistory:
+    usage: /mutehistory (target)
+    description: View a players mute history
